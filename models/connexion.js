@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connectionString = process.env.CONNECTION_STRING;
+const connectionString = process.env.CONNECTION_STRING_MONGODB;
 
 mongoose
   .connect(connectionString, { connectTimeoutMS: 2000 })
