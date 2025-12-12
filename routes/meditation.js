@@ -4,35 +4,7 @@ const Meditation = require("../models/meditations");
 const { checkBody } = require("../modules/checkBody");
 // Tableaux des url en fonction des choix theme, duration pour le mode "guidee" et éventuellement "solo" (si url musique ajouté plus tard)
 
-// const meditations = [
-//   {
-//     theme: "anxiete",
-//     mode: "guidee",
-//     durations: {
-//       3: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765279887/Murmure_Anxiete_3_min_abgfhl.mp3", //IA ElevenLabs
-//       5: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//       10: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//     },
-//   },
-//   {
-//     theme: "detente",
-//     mode: "guidee",
-//     durations: {
-//       3: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a", //Stéphanie
-//       5: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//       10: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//     },
-//   },
-//   {
-//     theme: "sommeil",
-//     mode: "guidee",
-//     durations: {
-//       3: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765279302/Murmure_Sommeil_3min_y34fz0.mp3", //IA ElevenLabs
-//       5: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//       10: "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a",
-//     },
-//   },
-// ];
+// Données à intégrer à la base de données de test en bas du fichier, à effacer à la fin:
 
 router.post("/player", async (req, res) => {
   try {
@@ -42,7 +14,9 @@ router.post("/player", async (req, res) => {
 
     // Vérifier que toutes les données sont là
     if (!checkBody(req.body, ["theme", "mode", "duration"])) {
-      return res.status(400).json({ result: false, error: "Missing or empty fields" });
+      return res
+        .status(400)
+        .json({ result: false, error: "Missing or empty fields" });
     }
 
     // Identifier la bonne méditation
@@ -60,7 +34,6 @@ router.post("/player", async (req, res) => {
       });
     }
 
-    
     // Réponse finale si tout se passe bien
     res.json({
       result: true,
@@ -92,3 +65,70 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
+
+// Données base de données - A EFFACER A L'AVANCEMENT
+// [
+//   {
+
+//     "theme": "anxiete",
+//     "mode": "guidee",
+//     "duration": 3,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765279887/Murmure_Anxiete_3_min_abgfhl.mp3"
+
+//   },
+//   {
+
+//     "theme": "anxiete",
+//     "mode": "guidee",
+//     "duration": 5,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a"
+
+//   },
+//   {
+
+//     "theme": "detente",
+//     "mode": "guidee",
+//     "duration": 3,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a"
+
+//   },
+//   {
+
+//     "theme": "detente",
+//     "mode": "guidee",
+//     "duration": 5,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a"
+
+//   },
+//   {
+
+//     "theme": "detente",
+//     "mode": "guidee",
+//     "duration": 5,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a"
+
+//   },
+//   {
+
+//     "theme": "anxiete",
+//     "mode": "guidee",
+//     "duration": 10,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765199945/Murmure__Medit_detente_3_min.m4a"
+
+//   },
+//   {
+
+//     "theme": "sommeil",
+//     "mode": "guidee",
+//     "duration": 3,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765279302/Murmure_Sommeil_3min_y34fz0.mp3"
+
+//   },
+//   {
+//    "theme": "sommeil",
+//     "mode": "guidee",
+//     "duration": 5,
+//     "audioUrl": "https://res.cloudinary.com/dmbowwvt8/video/upload/v1765279302/Murmure_Sommeil_3min_y34fz0.mp3"
+
+//   }
+// ]
