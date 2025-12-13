@@ -29,7 +29,7 @@ router.post('/signup', (req, res) => {
         username: req.body.username,
         password: hash,
         token: uid2(32),
-        creationDate: date,
+        creationDate: new Date(),
         progressNb: 0,
       });
 
