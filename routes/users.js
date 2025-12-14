@@ -22,7 +22,6 @@ router.post('/signup', (req, res) => {
     if (data === null) {
 
       const hash = bcrypt.hashSync(req.body.password, 10);
-      let date = new Date().toLocaleString("fr-FR");
 
       const newUser = new User({
         email: req.body.email,
