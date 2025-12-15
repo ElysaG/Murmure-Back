@@ -7,7 +7,7 @@ require('dotenv').config();
 // Lire le fichier JSON
 const chapterData = JSON.parse(fs.readFileSync('data/chapters.json', 'utf-8'));
 // Lire le fichier json + extraire L'OID en String et convertir la date en Objet Date (En utilisant l'Optional Chaining)
-const userData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8')).map(user => ({
+const userData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8')).map((user) => ({
   ...user,
   _id: user._id?.$oid || undefined,
   creationDate: user.creationDate?.$date ? new Date(user.creationDate.$date) : undefined,
