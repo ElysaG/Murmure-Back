@@ -7,6 +7,8 @@ require('dotenv').config();
 
 // Lire le fichier JSON
 const chapterData = JSON.parse(fs.readFileSync('data/chapters.json', 'utf-8'));
+const meditationData = JSON.parse(fs.readFileSync('data/meditations.json', 'utf-8'));
+
 // Lire le fichier json + extraire L'OID en String et convertir la date en Objet Date (En utilisant l'Optional Chaining)
 const userData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8')).map((user) => ({
   ...user,
@@ -33,7 +35,7 @@ const importData = async () => {
 
     // Vider avant:
     await Meditation.deleteMany();
-      console.log('Données méditations précédentes effacées');
+    console.log('Données méditations précédentes effacées');
 
     // Importer
     await Meditation.create(meditationData);
