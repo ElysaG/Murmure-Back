@@ -60,7 +60,7 @@ async function callAIWithHistory(conversation) {
     });
     const rawResponse = completion.choices[0].message.content;
     const cleanedResponse = rawResponse.trim();
-    return cleanedResponse; 
+    return cleanedResponse;
   } catch (error) {
     console.error('Erreur Hugging Face callAIWithHistory au catch', error);
     return 'Je rencontre un petit souci pour répondre. Respire un instant, puis repose-moi ta question...';
@@ -101,8 +101,8 @@ io.on('connection', (socket) => {
       // Message d'accueil personnalisé
       console.log('username:', username);
       const welcomeMessage = username
-        ? `Bonjour ${username}, comment vas-tu aujourd'hui?`
-        : `Bonjour, comment vas-tu aujourd'hui?`;
+        ? `Bonjour ${username}, comment te sens-tu aujourd'hui?`
+        : `Bonjour, comment te sens-tu aujourd'hui?`;
 
       // Première connexion chat
       conversationsByToken[token] = [
@@ -120,7 +120,7 @@ io.on('connection', (socket) => {
     // pas de token : conversation temporaire non sauvegardée
     conversation = [
       { role: 'system', content: SYSTEM_PROMPT },
-      { role: 'assistant', content: "Bonjour, comment vas-tu aujourd'hui?" },
+      { role: 'assistant', content: "Bonjour, comment te sens-tu aujourd'hui?" },
     ];
     console.log('conversation temporaire sans token');
   }
