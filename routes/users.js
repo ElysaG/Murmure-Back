@@ -28,11 +28,11 @@ router.post('/signup', (req, res) => {
         password: hash,
         token: uid2(32),
         creationDate: new Date(),
-        progressNb: 0,
+        progressNb: req.body.progressNb || 0, // Accepte progressNb ou défaut à 0
       });
 
       newUser.save().then((newDoc) => {
-        res.json({ result: true, info: newDoc });
+        res.json({ result: true, token: newDoc.token, username: newDoc.username, progressNb: newDoc.progressNb });
       });
     } else {
       res.json({ result: false, error: 'User already exists' });
